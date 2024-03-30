@@ -1,0 +1,23 @@
+{% load static %}
+
+<div>
+  <nav class="navbar bg-body-secondary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'surat_masuk' %}">
+        <img src="{% static 'img/kemhan_logo.png' %}" alt="KEMHAN Logo" width="45" height="45" />
+        <span>ARSIP TU SETBARANAHAN</span>
+      </a>
+
+      <ul class="nav nav-underline">
+        <div style=" font-weight: bold; " class="d-flex gap-4">
+
+          <li class="nav-item">
+            <a class="nav-link   fa fa-arrow-left {% if request.path == '/surat/surat_masuk/' %} active {% endif %}" href="{% url 'surat_masuk' %}"></a>
+          </li>
+
+        </div>
+    
+      </ul>
+    </div>
+  </nav>
+</div>

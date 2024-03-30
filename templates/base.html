@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap5.min.css' %}">
+    <script type="text/javascript" src="{% static 'js/chart.min.js' %}"></script> 
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/kemhan_logo.png' %}">
+
+    <title>{{ page_title }}</title>
+   
+
+
+</head>
+<body style="font-family: Oswald, Helvetica, Arial, sans-serif!important; font-size: 14px;" class="text-light">
+
+           {% block login %}{% endblock login %}
+           {% block dashboard %}{% endblock dashboard %}
+
+           
+
+   
+            <script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/font_awsome.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/jquery-3.7.1.slim.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %}"></script> 
+            <script type="text/javascript" src="{% static 'js/dataTables.bootstrap5.min.js' %}"></script> 
+            <script type="text/javascript" src="{% static 'js/htmx.min.js' %}" defer ></script> 
+
+
+
+
+
+            <script>
+                document.body.addEventListener('htmx:configRequest', (event) => {
+                  event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+                })
+            </script>
+
+
+            {% comment %} <script>
+                // Display the loader
+                document.getElementById('loader').style.display = 'inline-block';
+            
+                // Simulate an asynchronous action (e.g., fetching data)
+                setTimeout(function() {
+                  // Hide the loader when the action is complete
+                  document.getElementById('loader').style.display = 'none';
+                  // You can update the content or perform other actions here
+                //  document.getElementById('content').innerHTML += '<p>Async action complete!</p>';
+                }, 3000); // Simulating a 3-second delay
+            </script> {% endcomment %}
+
+            <script>
+                  var li_items = document.querySelectorAll(".accordion_wrap ul li");
+                  var ul = document.querySelector(".accordion_wrap ul");
+
+                  li_items.forEach(function(item){
+                    item.addEventListener("click", function(){
+                      li_items.forEach(function(item){
+                        item.classList.remove("active");
+                      })
+                      item.classList.add("active");
+                    });
+                  });
+
+                  ul.addEventListener("mouseleave", function(){
+                    li_items.forEach(function(item){
+                      item.classList.remove("active");
+                    })
+                  });
+            </script>
+
+
+            <script>
+                  {% comment %} Nota Dinas {% endcomment %}
+                  new DataTable('#tabel_nota_dinas',{               
+                  });
+                  new DataTable('#tabel_bon_nomor',{
+                  });
+                  new DataTable('#tabel_nomor_tersedia',{
+                  });
+                  new DataTable('#tabel_edit_nota_dinas',{
+                  });
+                  
+                  {% comment %} Surat Biasa {% endcomment %}
+                  new DataTable('#tabel_surat_biasa',{
+                  });
+                  new DataTable('#tabel_surat_biasa_bon_nomor',{
+                  });
+                  new DataTable('#tabel_surat_biasa_nomor_tersedia',{
+                  });
+                  new DataTable('#tabel_surat_biasa_edit',{
+                  });
+                  
+
+            </script>
+
+           
+
+         
+            
+</body>
+</html>
