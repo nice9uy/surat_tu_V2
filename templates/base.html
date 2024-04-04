@@ -19,7 +19,12 @@
 <body style="font-family: Oswald, Helvetica, Arial, sans-serif!important; font-size: 14px;" class="text-light">
 
            {% block login %}{% endblock login %}
-           {% block dashboard %}{% endblock dashboard %}
+           {% block dashboard_admin %}{% endblock dashboard_admin %}
+           {% block dashboard_kasubbag %}{% endblock dashboard_kasubbag %}
+           {% block dashboard_user %}{% endblock dashboard_user %}
+           {% block dashboard_super_admin %}{% endblock dashboard_super_admin %}
+
+           {% block surat_masuk_admin %}{% endblock surat_masuk_admin %}
 
 
 
@@ -78,6 +83,9 @@
 
 
             <script>
+                  new DataTable('#tabel_surat_masuk',{               
+                  });
+
                   {% comment %} Nota Dinas {% endcomment %}
                   new DataTable('#tabel_nota_dinas',{               
                   });

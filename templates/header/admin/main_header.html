@@ -12,37 +12,23 @@
 
 
         <div style="margin-right: 3.5rem; font-weight: bold; " class="d-flex gap-4">
-          
-          {% comment %} <li class="nav-item mt-1">
-            <a class="nav-link  fa fa-arrow-left " href=""></a>
-          </li>
-        
-          
-          <li class="nav-item ">
-            <a class="nav-link   {% if request.path == '/surat/surat_masuk/' %} active {% endif %}" href="">Surat Masuk</a>
+          <li class="nav-item">
+            <a class="nav-link   {% if request.path == '/surat/surat_masuk/' %}{% endif %}" href="">Surat Masuk</a>
           </li>
 
+
+
           <li class="nav-item">
-            <a class="nav-link {% if request.path == '/surat/surat_masuk/olah_surat/' %} active {% endif %}" href="">Olah Surat </a>
+            <a class="nav-link {% if request.path == '/surat/surat_masuk/olah_surat/' %}{% endif %}" href="">Surat Keluar</a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="">Laporan</a>
-          </li> 
-         {% endcomment %}
-       
+          </li>
 
-         
-
-       
-
+          
         </div>
-     
-
       </ul>
     </div>
   </nav>
 </div>
-
-
-

@@ -26,6 +26,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('',RedirectView.as_view(url='dashboard/')),
     path('dashboard/', include('dashboard.urls')),
+    path('arsip_surat/', include('surat_masuk.urls')),
 
 ]
 
