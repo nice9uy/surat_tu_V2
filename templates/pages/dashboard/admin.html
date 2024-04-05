@@ -2,93 +2,54 @@
 {% load static %}
 
 {% block dashboard_admin %}
-  {% include 'header/admin/main_header.html' %}
+{% include 'header/admin/main_header.html' %}
 
-  <div>
-    <div class="text-center mt-2 fw-bold ">
-     TOTAL SURAT MASUK
+<style>
+  .nav-tabs .nav-link {
+    border: none;
+  }
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    border: none;
+    border-bottom: 3px solid green; /* Change the color to your preference */
+  }
+</style>
+
+  
+ 
+<div class="container-fluid ">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" id="myTabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistik Surat Masuk</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Surat Keluar</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <h3>Home Content</h3>
+      <p>This is the content of the Home tab.</p>
     </div>
-    <div class="container-fluid  mt-3 d-flex align-items-center justify-content-between">
-      <div>
-        <p class="text-center ">Bounce </p>
-        <h3 class="text-center ">32.53%</h3>
-        <p class="text-danger d-flex">
-        </p>
-      </div>
-      <div>
-        <p class="statistics-title">Page Views</p>
-        <h3 class="rate-percentage">7,682</h3>
-        <p class="text-success d-flex">
-        </p>
-      </div>
-      <div>
-        <p class="statistics-title">New Sessions</p>
-        <h3 class="rate-percentage">68.8</h3>
-        <p class="text-danger d-flex">
-        </p>
-      </div>
-      <div>
-        <p class="statistics-title">New Sessions</p>
-        <h3 class="rate-percentage">68.8</h3>
-        <p class="text-danger d-flex">
-        </p>
-      </div>
-       <div>
-        <p class="statistics-title">New Sessions</p>
-        <h3 class="rate-percentage">68.8</h3>
-        <p class="text-danger d-flex">
-        </p>
-      </div>
-      <div>
-        <p class="statistics-title">Bounce Rate</p>
-        <h3 class="rate-percentage">32.53%</h3>
-        <p class="text-danger d-flex">
-        </p>
-      </div>
-      <div>
-        <p class="statistics-title">Page Views</p>
-        <h3 class="rate-percentage">7,682</h3>
-        <p class="text-success d-flex">
-        </p>
-      </div>
-      <div>
-        <p class="statistics-title">New Sessions</p>
-        <h3 class="rate-percentage">68.8</h3>
-        <p class="text-danger d-flex">
-        </p>
-      </div>
-      <div>
-        <p class="statistics-title">Bounce Rate</p>
-        <h3 class="rate-percentage">32.53%</h3>
-        <p class="text-danger d-flex">
-        </p>
-      </div>
-      <div>
-        <p class="statistics-title">Page Views</p>
-        <h3 class="rate-percentage">7,682</h3>
-        <p class="text-success d-flex">
-        </p>
-      </div>
-      <div>
-        <p class="statistics-title">New Sessions</p>
-        <h3 class="rate-percentage">68.8</h3>
-        <p class="text-danger d-flex">
-        </p>
-      </div>
-      <div class="d-none d-md-block">
-        <p class="statistics-title">Avg. Time on Site</p>
-        <h3 class="rate-percentage">2m:35s</h3>
-        <p class="text-success d-flex">
-        </p>
-      </div>
-      <div class="d-none d-md-block">
-        <p class="statistics-title">New Sessions</p>
-        <h3 class="rate-percentage">68.8</h3>
-        <p class="text-danger d-flex">
-        </p>
-      </div>
-     
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <h3>Profile Content</h3>
+      <p>This is the content of the Profile tab.</p>
     </div>
-    
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <h3>Contact Content</h3>
+      <p>This is the content of the Contact tab.</p>
+    </div>
   </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 {% endblock %}
