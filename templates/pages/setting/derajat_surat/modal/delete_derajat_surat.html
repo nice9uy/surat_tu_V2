@@ -1,0 +1,33 @@
+
+{% for data in derajat_surat %}
+<div class="modal fade" id="button_delete_derajat_surat{{ data.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">HAPUS DERAJAT SURAT</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form method="POST" action="{% url 'delete_derajat_surat' data.id %}">
+            {% csrf_token %}
+
+            <div>
+               Apakah derajat surat "{{ data.dejarat_surat | upper  }}" ingin dihapus?
+            </div>
+
+            {% comment %} <input class="form-control" type="text" placeholder="" value="{{ data.klasifikasi }}" name="edit_klasifikasi" aria-label="default input example">  {% endcomment %}
+   
+        </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">HAPUS</button>
+            </div>
+
+          </form>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+  

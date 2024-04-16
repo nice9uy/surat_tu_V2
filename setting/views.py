@@ -18,10 +18,10 @@ def klasifkasi(request):
 def tambah_klasifikasi(request):
 
     if request.method == "POST":
-        get_klasifikasi = request.POST.get("tambah_klasifikasi")
-
+        get_klasifikasi     = request.POST.get("tambah_klasifikasi")
+        
         tambah_klasifikasi_surat = DbKlasifikasi(
-            klasifikasi=get_klasifikasi,
+            klasifikasi = get_klasifikasi,
         )
 
         tambah_klasifikasi_surat.save()
@@ -109,7 +109,7 @@ def delete_jenis_surat(request , id_jenis_surat):
         return redirect('jenis_surat')
     
 ##########################################################
-
+@login_required(login_url="/accounts/login/")
 def derajat_surat(request):
     derajat_surat_data = DbDerajatSurat.objects.all().values()
 
@@ -127,8 +127,33 @@ def tambah_derajat_surat(request):
         get_derajat_surat = request.POST.get("derajat_surat")
 
         tambah_derajat_surat = DbDerajatSurat(
-            klasifikasi    =get_derajat_surat,
+            dejarat_surat    = get_derajat_surat,
         )
 
         tambah_derajat_surat.save()
         return redirect("derajat_surat")
+    
+@login_required(login_url="/accounts/login/")
+def edit_derajat_surat(request , id_derajat_surat ):
+    edit_derajat_surat = get_object_or_404(DbDerajatSurat, pk = id_derajat_surat)
+    
+    if request.method == 'POST':
+        get_edit_derajat_surat        = request.POST.get('edit_derajat_surat')
+            
+        edit_derajat_surat = DbDerajatSurat(
+                id               = id_derajat_surat,
+                dejarat_surat    = get_edit_derajat_surat,        
+        )
+            
+        edit_derajat_surat.save()
+        return redirect('derajat_surat')
+    
+@login_required(login_url="/accounts/login/")
+def delete_derajat_surat(request , id_derajat_surat):
+    delete_derajat_surat = get_object_or_404(DbDerajatSurat, pk = id_derajat_surat)
+
+    if request.method == 'POST':
+        delete_derajat_surat.delete()
+
+        return redirect('derajat_surat')
+        

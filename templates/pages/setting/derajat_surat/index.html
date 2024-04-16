@@ -28,8 +28,8 @@
             <td>{{ data.dejarat_surat }}</td>
 
             <td class="text-center gap-2">
-              <button type="button" class="btn btn-success btn-sm fas fa-edit" data-bs-toggle="modal" data-placement="bottom" title="UPDATE" data-bs-target="#edit_klasifikasi{{ data.id }}"></button>
-              <button type="button" class="btn btn-danger btn-sm fa fa-trash" data-bs-toggle="modal" data-placement="bottom" title="HAPUS" data-bs-target="#delete_klasifikasi{{ data.id }}"></button>
+              <button type="button" class="btn btn-success btn-sm fas fa-edit" data-bs-toggle="modal" data-placement="bottom" title="UPDATE" data-bs-target="#buton_edit_derajat_surat{{ data.id }}"></button>
+              <button type="button" class="btn btn-danger btn-sm fa fa-trash" data-bs-toggle="modal" data-placement="bottom" title="HAPUS" data-bs-target="#button_delete_derajat_surat{{ data.id }}"></button>
             </td>
           </tr>
         {% endfor %}
@@ -38,8 +38,8 @@
   </div>
 
   {% include 'pages/setting/derajat_surat/modal/tambah_derajat_surat.html' %}
-  {% include 'pages/setting/klasifikasi/modal/edit_klasifikasi.html' %}
-  {% include 'pages/setting/klasifikasi/modal/delete_klasifikasi.html' %}
+  {% include 'pages/setting/derajat_surat/modal/edit_derajat_surat.html' %}
+  {% include 'pages/setting/derajat_surat/modal/delete_derajat_surat.html' %} 
 
   <div class="container">
     <footer class="">
