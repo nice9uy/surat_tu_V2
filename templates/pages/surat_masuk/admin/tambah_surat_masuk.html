@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block tambah_surat_masuk %}
+ {% include 'header/admin/surat_masuk/tambah_surat_header.html' %} 
+
+
+  <div class="container card mt-5 text-center">
+    <div style="font-size: 20px;" class="card-header">TAMBAH SURAT</div>
+    <div class="card-body">
+      <form action="{% url 'tambah_surat_masuk' %}" method="POST" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+
+       
+        <div class="col-3">lass="needs-validation"
+            <label for="inputEmail4" class="form-label">JENIS SURAT</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder=""  name="jenis_surat" value="{{  jenis_surat  }}" readonly />
+        </div>
+
+
+        <div class="col-3">
+          <label for="inputEmail4" class="form-label">KLASIFIKASI</label>
+          <select class="form-select" aria-label="Default select example" id="klasifikasi" name="klasifikasi" >
+            <option value=""></option>
+            {% for v in klasifikasi %}
+              <option value="{{ v }}">{{ v }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="col-3">
+          <label for="inputPassword4" class="form-label">TANGGAL AGENDA</label>
+          <input type="date" class="form-select" placeholder="First name" aria-label="First name" name="tanggal_agenda"  value="{{  hari_ini | date:"Y-m-d"  }}" readonly />
+        </div>  
+        <div class="col-3">
+          <label for="inputAddress" class="form-label">NO AGENDA</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="" name="no_agenda" value="{{  no_agenda  }}" readonly />
+        </div>
+
+        <div class="col-md-3">
+          <label for="inputPassword4" class="form-label">TANGGAL SURAT</label>
+          <input type="date" class="form-select" placeholder="First name" aria-label="First name" name="tanggal_surat"  />
+        </div>
+
+        <div class="col-4">
+          <label for="inputAddress" class="form-label">NO SURAT</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="" name="no_surat" required />
+        </div>
+
+        <div class="col-5">
+          <label for="inputAddress" class="form-label">SURAT DARI</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="" name="surat_dari" required />
+        </div>
+
+        <div class="col-3">
+          <label for="inputEmail4" class="form-label">DERAJAT SURAT</label>
+          <div class="input-group">
+            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon"  name="derajat_surat">
+      
+              <option value=""></option>
+              {% for v in derajat_surat %}
+              <option value="{{ v }}">{{ v }}</option>
+            {% endfor %}
+            </select>
+          </div>
+
+        </div>
+
+        <div class="col-9">
+          <label for="inputAddress" class="form-label">PERIHAL</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="" name="perihal" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="formFile" class="form-label">UPLOAD FILES</label>
+          <input class="form-control" type="file" accept=".pdf" id="file_input" name="file_name" required />
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">TAMBAH SURAT</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+{% endblock tambah_surat_masuk %}

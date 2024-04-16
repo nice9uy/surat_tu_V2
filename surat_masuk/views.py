@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from setting.models import DbJenisSurat
 
 
 # Create your views here.
@@ -8,7 +9,15 @@ def surat_masuk(request):
 
         if request.user.groups.filter(name="ADMIN_TU").exists():
 
-            context = {"page_title": "Admin - xx"}
+            jenis_surat_data = list(DbJenisSurat.objects.all().values_list('jenis_surat' , flat=True))
+
+
+            context = {
+                "page_title"  : "Admin - xx",
+                'jenis_surat' : jenis_surat_data 
+            }
+
+
 
             return render(request, "pages/surat_masuk/admin/admin.html", context)
 
@@ -28,3 +37,8 @@ def surat_masuk(request):
 
     else:
         pass
+
+
+def tambah_surat_masuk(request):
+    return render(request, "pages/surat_masuk/admin/tambah_surat_masuk.html")
+    

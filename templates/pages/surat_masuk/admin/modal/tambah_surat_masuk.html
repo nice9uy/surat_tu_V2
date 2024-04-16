@@ -1,0 +1,31 @@
+<div class="modal fade" id="tambah_surat_masuk" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">PILIH JENIS SURAT</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form method="POST" action="">
+            {% csrf_token %}
+
+            <select class="form-select needs-validation" aria-label="Default select example" name="jenis_surat_input" required >
+                  <option value=""></option>
+                  {% for v in jenis_surat %}
+                    <option value="{{ v }}">{{ v }}</option>
+                  {% endfor %}
+
+            </select>
+   
+        </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">OK</button>
+            </div>
+
+      </form>
+      </div>
+    </div>
+</div>
+  

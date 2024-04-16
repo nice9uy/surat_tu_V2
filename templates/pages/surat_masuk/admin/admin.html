@@ -18,7 +18,7 @@
       </form>
 
       <div class="gap-5">
-        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-placement="bottom" title="UPDATE" data-bs-target="#tambah_surat">TAMBAH SURAT</button>
+        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-placement="bottom" title="UPDATE" data-bs-target="#tambah_surat_masuk">TAMBAH SURAT</button>
       </div>
     </div>
 
@@ -85,6 +85,9 @@
       </tbody>
     </table>
   </div>
+
+
+  {% include 'pages/surat_masuk/admin/modal/tambah_surat_masuk.html' %}
 
   {% comment %} {% include 'modal/disposisi/upload_disposisi.html' %}
   {% include 'modal/olah_surat.html' %}
