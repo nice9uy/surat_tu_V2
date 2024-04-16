@@ -1,0 +1,32 @@
+
+{% for data in jenis_surat %}
+<div class="modal fade" id="button_edit_jenis_surat{{ data.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">TAMBAH JENIS SURAT</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form method="POST" action="{% url 'edit_jenis_surat' data.id %}" class="needs-validation" novalidate>
+          {% csrf_token %}
+              <div class="mb-1">
+                <label for="exampleInputEmail1" class="form-label">JENIS SURAT</label>
+                <input class="form-control" type="text" placeholder="" name="jenis_surat" value="{{ data.jenis_surat }}" aria-label="default input example" required>
+              </div>
+              <div class="mb-4">
+                <label for="exampleInputPassword1" class="form-label">INISIAL HURUF</label>
+                <input class="form-control" type="text" placeholder="" name="inisialisai_huruf" value="{{ data.inisial_nama }}" aria-label="default input example" required>
+              </div>
+              <div class="text-center ">
+                  <button type="submit" class="btn btn-primary">EDIT </button>
+
+              </div>
+           </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+{% endfor %}

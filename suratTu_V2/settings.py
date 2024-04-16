@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_htmx',
     'dashboard',
+    'setting',
     'surat_masuk',
 ]
 

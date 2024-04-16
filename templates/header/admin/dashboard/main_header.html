@@ -3,30 +3,28 @@
 <div>
   <nav class="navbar bg-body-secondary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="">
+      <a class="navbar-brand" href="{% url 'dashboard' %}">
         <img src="{% static 'img/kemhan_logo.png' %}" alt="KEMHAN Logo" width="45" height="45" />
         <span>ARSIP TU SETBARANAHAN</span>
       </a>
 
       <ul class="nav nav-underline">
-
-
         <div style="margin-right: 3.5rem; font-weight: bold; " class="d-flex gap-4">
           <li class="nav-item">
-            <a class="nav-link   {% if request.path == '/surat/surat_masuk/' %}{% endif %}" href="">Surat Masuk</a>
+            <a class="nav-link   {% if request.path == '/surat/surat_masuk/' %}{% endif %}" href="{% url 'surat_masuk' %}">Surat Masuk</a>  
           </li>
-
-
 
           <li class="nav-item">
             <a class="nav-link {% if request.path == '/surat/surat_masuk/olah_surat/' %}{% endif %}" href="">Surat Keluar</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="">Laporan</a>
+            <a class="nav-link {% if request.path == '/arsip_surat/setting/klasifkasi/' %}{% endif %}" href="{% url 'klasifkasi' %}">Setting Surat</a>
           </li>
 
-          
+          <li class="nav-item">
+            <a type="button" class="btn btn-danger fa fa-sign-out mt-1" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Logout" href="{% url 'logout' %}"></a>
+          </li>
         </div>
       </ul>
     </div>

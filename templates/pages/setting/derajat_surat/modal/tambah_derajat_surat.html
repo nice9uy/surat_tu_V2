@@ -1,0 +1,22 @@
+<div class="modal fade" id="tambah_derajat_surat" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">TAMBAH DERAJAT SURAT</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form method="POST" action="{% url 'tambah_derajat_surat' %}" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <input class="form-control" type="text" placeholder="" name="derajat_surat" aria-label="default input example" required>
+        </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">TAMBAH</button>
+            </div>
+
+      </form>
+      </div>
+    </div>
+</div>
+  

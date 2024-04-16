@@ -27,6 +27,7 @@ urlpatterns = [
     path('',RedirectView.as_view(url='dashboard/')),
     path('dashboard/', include('dashboard.urls')),
     path('arsip_surat/', include('surat_masuk.urls')),
+    path('arsip_surat/setting/', include('setting.urls')),
 
 ]
 

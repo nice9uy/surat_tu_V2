@@ -2,54 +2,62 @@
 {% load static %}
 
 {% block dashboard_admin %}
-{% include 'header/admin/main_header.html' %}
+  {% include 'header/admin/dashboard/main_header.html' %}
 
-<style>
-  .nav-tabs .nav-link {
-    border: none;
-  }
-  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    border: none;
-    border-bottom: 3px solid green; /* Change the color to your preference */
-  }
-</style>
+  <style>
+    .nav-tabs .nav-link {
+      border: none;
+    }
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+      border: none;
+      border-bottom: 4px solid green; /* Change the color to your preference */
+    }
+  </style>
 
-  
- 
-<div class="container-fluid ">
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" id="myTabs" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistik Surat Masuk</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Surat Keluar</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-    </li>
-  </ul>
+  <div class="container-fluid mt-2">
+    <h4  class="text-center">STATISTIK SURAT MASUK DAN SURAT KELUAR</h4>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="surat_masuk-tab" data-bs-toggle="tab" data-bs-target="#surat_masuk" type="button" role="tab" aria-controls="surat_masuk" aria-selected="true">Surat Masuk</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="surat_keluar-tab" data-bs-toggle="tab" data-bs-target="#surat_keluar" type="button" role="tab" aria-controls="surat_keluar" aria-selected="false">Surat Keluar</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="laporan_harian-tab" data-bs-toggle="tab" data-bs-target="#laporan_harian" type="button" role="tab" aria-controls="laporan_harian" aria-selected="false">Laporan Harian</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="laporan_bulanan-tab" data-bs-toggle="tab" data-bs-target="#laporan_bulanan" type="button" role="tab" aria-controls="laporan_bulanan" aria-selected="false">Laporan Bulanan</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="laporan_tahunan-tab" data-bs-toggle="tab" data-bs-target="#laporan_tahunan" type="button" role="tab" aria-controls="laporan_tahunan" aria-selected="false">Laporan Tahunan</button>
+      </li>
+    </ul>
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <h3>Home Content</h3>
-      <p>This is the content of the Home tab.</p>
-    </div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <h3>Profile Content</h3>
-      <p>This is the content of the Profile tab.</p>
-    </div>
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-      <h3>Contact Content</h3>
-      <p>This is the content of the Contact tab.</p>
+    <!-- Tab panes -->
+    <div class="tab-content mt-3" id="myTabContent">
+      <div class="tab-pane fade show active" id="surat_masuk" role="tabpanel" aria-labelledby="surat_masuk-tab">
+        <h3>Home Tab Content</h3>
+        <p>This is the content of the Home tab.</p>
+      </div>
+      <div class="tab-pane fade" id="surat_keluar" role="tabpanel" aria-labelledby="surat_keluar-tab">
+        <h3>Profile Tab Content</h3>
+        <p>This is the content of the Profile tab.</p>
+      </div>
+      <div class="tab-pane fade" id="laporan_harian" role="tabpanel" aria-labelledby="laporan_harian-tab">
+        <h3>Contact Tab Contenxxxzzzzzzzzz</h3>
+        <p>This is the content of the Contact tab.</p>
+      </div>
+      <div class="tab-pane fade" id="laporan_bulanan" role="tabpanel" aria-labelledby="laporan_bulanan-tab">
+        <h3>Contact Tab Contentxxxxxxxxx</h3>
+        <p>This is the content of the Contact tab.</p>
+      </div>
+      <div class="tab-pane fade" id="laporan_tahunan" role="tabpanel" aria-labelledby="laporan_tahunan-tab">
+        <h3>Contact Tab Contentyyyyyyyyyy</h3>
+        <p>This is the content of the Contact tab.</p>
+      </div>
     </div>
   </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
 {% endblock %}

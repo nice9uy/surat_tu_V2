@@ -26,6 +26,11 @@
 
            {% block surat_masuk_admin %}{% endblock surat_masuk_admin %}
 
+           
+           {% comment %} {% block setting %}{% endblock setting %} {% endcomment %}
+           {% block klasifikasi %}{% endblock klasifikasi %}
+           {% block jenis_surat %}{% endblock jenis_surat %}
+            {% block derajat_surat %}{% endblock derajat_surat %}
 
 
    
@@ -40,6 +45,26 @@
             <script type="text/javascript" src="{% static 'js/popper.min.js' %}" defer ></script> 
             
             
+            <script>
+              (() => {
+                'use strict'
+              
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                const forms = document.querySelectorAll('.needs-validation')
+              
+                // Loop over them and prevent submission
+                Array.from(forms).forEach(form => {
+                  form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                      event.preventDefault()
+                      event.stopPropagation()
+                    }
+              
+                    form.classList.add('was-validated')
+                  }, false)
+                })
+              })()
+            </script>
 
 
 
@@ -63,7 +88,7 @@
                 }, 3000); // Simulating a 3-second delay
             </script> {% endcomment %}
 
-            <script>
+            {% comment %} <script>
                   var li_items = document.querySelectorAll(".accordion_wrap ul li");
                   var ul = document.querySelector(".accordion_wrap ul");
 
@@ -81,11 +106,18 @@
                       item.classList.remove("active");
                     })
                   });
-            </script>
+            </script> {% endcomment %}
 
 
             <script>
                   new DataTable('#tabel_surat_masuk',{               
+                  });
+
+                  new DataTable('#tabel_klasifikasi',{               
+                  });
+                  new DataTable('#tabel_jenis_surat',{               
+                  });
+                  new DataTable('#tabel_derajat_surat',{               
                   });
 
                   {% comment %} Nota Dinas {% endcomment %}

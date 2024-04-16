@@ -1,0 +1,30 @@
+
+{% for data in jenis_surat %}
+<div class="modal fade" id="button_delete_jenis_surat{{ data.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">HAPUS JENIS SURAT</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form method="POST" action="{% url 'delete_jenis_surat' data.id %}">
+          {% csrf_token %}
+
+          <div>
+             APAKAH JENIS SURAT " {{ data.jenis_surat | upper  }} " INGIN DIHAPUS?
+          </div>
+ 
+      </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">HAPUS</button>
+          </div>
+
+        </form>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
