@@ -38,7 +38,7 @@ class ListDisposisiDb(admin.ModelAdmin):
 
 
 class ListTempNoAgenda(admin.ModelAdmin):
-    list_display = ("username", "no_agenda", "jenis_surat")
+    list_display = ("no_agenda", "jenis_surat")
 
 
 admin.site.site_header = "Admin ARSIP TU SETBARANAHAN"

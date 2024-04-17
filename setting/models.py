@@ -23,3 +23,5 @@ class DbDerajatSurat(models.Model):
 
     class Meta:
         db_table = "DbDerajatSurat"
+
+

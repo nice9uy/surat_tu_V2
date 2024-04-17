@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block tambah_surat_masuk %}
+
  {% include 'header/admin/surat_masuk/tambah_surat_header.html' %} 
 
 
@@ -12,7 +13,7 @@
         {% csrf_token %}
 
        
-        <div class="col-3">lass="needs-validation"
+        <div class="col-3">
             <label for="inputEmail4" class="form-label">JENIS SURAT</label>
             <input type="text" class="form-control" id="inputAddress" placeholder=""  name="jenis_surat" value="{{  jenis_surat  }}" readonly />
         </div>
