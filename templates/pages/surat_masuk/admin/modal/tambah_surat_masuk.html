@@ -7,7 +7,7 @@
         </div>
         <div class="modal-body">
 
-          <form method="POST" action="{% url 'tambah_surat_masuk' %}">
+          <form method="POST" action="{% url 'generate_no_agenda' %}">
             {% csrf_token %}
 
             <select class="form-select needs-validation" aria-label="Default select example" name="jenis_surat_input" required >

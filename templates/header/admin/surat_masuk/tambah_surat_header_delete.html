@@ -1,0 +1,22 @@
+{% load static %}
+
+<div>
+  <nav class="navbar bg-body-secondary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'delete_no_agenda_temp' %}">
+        <img src="{% static 'img/kemhan_logo.png' %}" alt="KEMHAN Logo" width="45" height="45" />
+        <span>ARSIP TU SETBARANAHAN</span>
+      </a>
+
+      <ul class="nav nav-underline">
+        <div style="margin-right: 3.5rem; font-weight: bold; " class="d-flex gap-4">
+          <li class="nav-item mt-1">
+            <a class="nav-link fa fa-arrow-left" href="{% url 'delete_no_agenda_temp' %}"></a>
+          </li>
+
+        
+        </div>
+      </ul>
+    </div>
+  </nav>
+</div>

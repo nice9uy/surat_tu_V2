@@ -6,7 +6,7 @@ from surat_masuk.models import DbSurat, TempNoAgenda
 
 # Create your views here.
 def surat_masuk(request):
-
+    
     if request.user.is_authenticated:
 
         if request.user.groups.filter(name="ADMIN_TU").exists():
@@ -36,19 +36,20 @@ def surat_masuk(request):
 
     else:
         pass
+def delete_no_agenda_temp(request):
+    TempNoAgenda.objects.all().delete()
+
+    return redirect('surat_masuk')
 
 
-def tambah_surat_masuk(request):
-    username       = request.user
-
-    print(username)
+def generate_no_agenda(request):
+    username   = request.user
 
     no         = 1
     hari_ini   = date.today()
     bulan_ini  = date.today().month
     tahun_ini  = date.today().year
 
-    print(type(tahun_ini))
     # tahun_ini  = 2025
 
     if bulan_ini == 1:
@@ -201,6 +202,29 @@ def tambah_surat_masuk(request):
 
     
 
-def submit_tambah_surat_masuk(request):
-    return render(request, "pages/surat_masuk/admin/pages_tambah_surat_masuk.html")
+def tambah_surat_masuk(request):
+    
+    user                    = request.user
+    klasifikasi             = DbKlasifikasi.objects.all().values_list('klasifikasi', flat=True )
+    jenis_surat             = DbJenisSurat.objects.all().values_list('jenis_surat', flat=True)
+    derajat_surat           = DbDerajatSurat.objects.all().values_list('dejarat_surat', flat=True )
+
+    try:
+        no_agenda_data      = list(TempNoAgenda.objects.filter(username = user).values_list('no_agenda', flat=True ))
+        jenis_surat_data    = list(TempNoAgenda.objects.filter(username = user).values_list('jenis_surat', flat=True ))
+        tgl_agenda_surat    = list(TempNoAgenda.objects.filter(username = user).values_list('tgl_agenda', flat=True ))
+        no_agenda           = no_agenda_data[0]
+        jenis_surat_x       = jenis_surat_data[0]
+        tgl_agenda          = tgl_agenda_surat[0]
+    except:
+        pass
+
+
+    context = {
+        'klasifikasi'   : klasifikasi,
+        'jenis_surat'   : jenis_surat_x,
+        'derajat_surat' : derajat_surat,
+        'tgl_agenda'    : tgl_agenda
+    }
+    return render(request, "pages/surat_masuk/admin/pages_tambah_surat_masuk.html", context)
 

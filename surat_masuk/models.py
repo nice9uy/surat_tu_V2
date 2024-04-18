@@ -47,7 +47,7 @@ class DisposisiDb(models.Model):
         db_table = "DisposisiDb"
 
 class TempNoAgenda(models.Model):
-    username                = models.CharField(max_length=30)
+    username    = models.CharField(max_length=30)
     no_agenda   = models.CharField(max_length=30)
     jenis_surat = models.CharField(max_length=30)
     tgl_agenda  = models.DateField()

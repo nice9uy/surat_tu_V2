@@ -3,7 +3,7 @@
 
 {% block tambah_surat_masuk %}
 
- {% include 'header/admin/surat_masuk/tambah_surat_header.html' %} 
+ {% include 'header/admin/surat_masuk/tambah_surat_header_delete.html' %} 
 
 
   <div class="container card mt-5 text-center">
@@ -21,7 +21,7 @@
 
         <div class="col-3">
           <label for="inputEmail4" class="form-label">KLASIFIKASI</label>
-          <select class="form-select" aria-label="Default select example" id="klasifikasi" name="klasifikasi" >
+          <select class="form-select" aria-label="Default select example" id="klasifikasi" name="klasifikasi"  >
             <option value=""></option>
             {% for v in klasifikasi %}
               <option value="{{ v }}">{{ v }}</option>
@@ -31,7 +31,7 @@
 
         <div class="col-3">
           <label for="inputPassword4" class="form-label">TANGGAL AGENDA</label>
-          <input type="date" class="form-select" placeholder="First name" aria-label="First name" name="tanggal_agenda"  value="{{  hari_ini | date:"Y-m-d"  }}" readonly />
+          <input type="date" class="form-select" placeholder="First name" aria-label="First name" name="tanggal_agenda"  value="{{  tgl_agenda | date:"Y-m-d"  }}" readonly />
         </div>  
         <div class="col-3">
           <label for="inputAddress" class="form-label">NO AGENDA</label>
