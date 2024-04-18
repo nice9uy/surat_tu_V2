@@ -68,51 +68,19 @@
             </script>
 
 
-
             <script>
                 document.body.addEventListener('htmx:configRequest', (event) => {
                   event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
                 })
             </script>
 
-
-            {% comment %} <script>
-                // Display the loader
-                document.getElementById('loader').style.display = 'inline-block';
-            
-                // Simulate an asynchronous action (e.g., fetching data)
-                setTimeout(function() {
-                  // Hide the loader when the action is complete
-                  document.getElementById('loader').style.display = 'none';
-                  // You can update the content or perform other actions here
-                //  document.getElementById('content').innerHTML += '<p>Async action complete!</p>';
-                }, 3000); // Simulating a 3-second delay
-            </script> {% endcomment %}
-
-            {% comment %} <script>
-                  var li_items = document.querySelectorAll(".accordion_wrap ul li");
-                  var ul = document.querySelector(".accordion_wrap ul");
-
-                  li_items.forEach(function(item){
-                    item.addEventListener("click", function(){
-                      li_items.forEach(function(item){
-                        item.classList.remove("active");
-                      })
-                      item.classList.add("active");
-                    });
-                  });
-
-                  ul.addEventListener("mouseleave", function(){
-                    li_items.forEach(function(item){
-                      item.classList.remove("active");
-                    })
-                  });
-            </script> {% endcomment %}
-
-
             <script>
-                  new DataTable('#tabel_surat_masuk',{               
-                  });
+                  new DataTable('#tabel_surat_masuk',{   
+                    scrollX: true,
+                      autoWidth: true,
+                      scrollCollapse: true,
+                      scrollY : "500px"            
+                  }); 
 
                   new DataTable('#tabel_klasifikasi',{               
                   });
@@ -143,10 +111,6 @@
                   
 
             </script>
-
-           
-
-         
             
 </body>
 </html>

@@ -42,18 +42,18 @@
         </tr>
       </thead>
       <tbody>
-        {% for data in data_surat %}
+        {% for data in surat_masuk %}
           <tr>
             <td class="text-center">{{ forloop.counter }}</td>
-            <td>{{ data.klasifikasi }}</td>
+            <td>{{ data.klasifikasi | default_if_none:"" }}</td>
             <td>{{ data.jenis_surat }}</td>
-            <td>{{ data.tgl_agenda|date:'d M Y' }}</td>
-            <td>{{ data.no_agenda }}</td>
-            <td>{{ data.tgl_surat|date:'d M Y' }}</td>
+            <td>{{ data.tgl_agenda | date:'d M Y' }}</td>
+            <td>{{ data.no_agenda | default_if_none:""}}</td>
+            <td>{{ data.tgl_surat | date:'d M Y' }}</td>
             <td>{{ data.no_surat }}</td>
-            <td>{{ data.surat_dari }}</td>
-            <td>{{ data.derajat_surat }}</td>
-            <td>{{ data.perihal }}</td>
+            <td>{{ data.surat_dari | default_if_none:""}}</td>
+            <td>{{ data.derajat_surat | default_if_none:""}}</td>
+            <td>{{ data.perihal | default_if_none:""}}</td>
 
             <td class="text-center">
               <div style="margin-left: -15px;">
@@ -62,15 +62,15 @@
             </td>
 
             <td class="text-center gap-2">
-              <a class="btn btn-danger btn-sm fa-solid fa-k" aria-current="page" title="KABADAN" target="_blank" href="{% url 'kabaranahan' data.id %}"></a>
-              <a class="btn btn-secondary btn-sm fa-solid fa-s" aria-current="page" title="SEKRETARIAT" target="_blank" href="{% url 'sekretariat' data.id %}"></a>
-              <a class="btn btn-info btn-sm fa-solid fa-u" aria-current="page" title="BAG UMUM" target="_blank" href="{% url 'bagum' data.id %}"></a>
+              <a class="btn btn-danger btn-sm fa-solid fa-k" aria-current="page" title="KABADAN" target="_blank" href=""></a>
+              <a class="btn btn-secondary btn-sm fa-solid fa-s" aria-current="page" title="SEKRETARIAT" target="_blank" href=""></a>
+              <a class="btn btn-info btn-sm fa-solid fa-u" aria-current="page" title="BAG UMUM" target="_blank" href=""></a>
             </td>
 
             <td class="text-center gap-2">
               <button type="button" class="btn btn-danger btn-sm fa fa-paper-plane" data-bs-toggle="modal" data-placement="bottom" title="Upload Disposisi" data-bs-target="#upload_disposisi{{ data.id }}"></button>
 
-              <form method="POST" action="{% url 'olah_disposisi' %}">
+              <form method="POST" action="">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-info btn-sm fas fa-info" data-bs-toggle="modal" title="Status Disposisi" name="filter_no_surat" value="{{ data.no_surat }}"></button>
               </form>

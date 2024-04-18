@@ -10,6 +10,7 @@ class ListDbSurat(admin.ModelAdmin):
     list_display = (
         "id",
         "username",
+        "jenis_surat",
         "klasifikasi",
         "tgl_agenda",
         "id_jenis_surat",
