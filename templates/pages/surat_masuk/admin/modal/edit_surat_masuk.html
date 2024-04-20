@@ -1,0 +1,99 @@
+
+{% for data in surat_masuk %}
+
+<div class="modal fade" id="button_edit_surat_masuk{{ data.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">EDIT SURAT MASUK</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center ">
+
+            <form action="" method="POST" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+        
+               
+                <div class="col-3">
+                    <label for="inputEmail4" class="form-label">JENIS SURAT</label>
+                    <select class="form-select needs-validation" aria-label="Default select example"  name="jenis_surat" required >
+                        <option  value="{{ data.jenis_surat }}">{{ data.jenis_surat }}</option>
+                        <option value="">================</option>
+                        {% for v in jenis_surat %}
+                          <option value="{{ v }}">{{ v }}</option>
+                        {% endfor %}
+      
+                    </select>
+
+                </div>
+        
+                <div class="col-3">
+                  <label for="inputEmail4" class="form-label">KLASIFIKASI</label>
+                  <select class="form-select" aria-label="Default select example" id="klasifikasi" name="klasifikasi"  >
+                    <option  value="{{ data.klasifikasi }}">{{ data.klasifikasi }}</option>
+                    <option value="">================</option>
+                    {% for v in klasifikasi %}
+                      <option value="{{ v }}">{{ v }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+        
+                <div class="col-3">
+                  <label for="inputPassword4" class="form-label">TANGGAL AGENDA</label>
+                  <input type="date" class="form-select" placeholder="First name" aria-label="First name" name="tanggal_agenda"  value="{{  hari_ini | date:"Y-m-d"  }}" readonly />
+                </div>  
+                <div class="col-3">
+                  <label for="inputAddress" class="form-label">NO AGENDA</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="" name="no_agenda" value="{{  no_agenda  }}" readonly />
+                </div>
+        
+                <div class="col-md-3">
+                  <label for="inputPassword4" class="form-label">TANGGAL SURAT</label>
+                  <input type="date" class="form-select" placeholder="First name" aria-label="First name" name="tanggal_surat"  />
+                </div>
+        
+                <div class="col-4">
+                  <label for="inputAddress" class="form-label">NO SURAT</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="" name="no_surat" required />
+                </div>
+        
+                <div class="col-5">
+                  <label for="inputAddress" class="form-label">SURAT DARI</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="" name="surat_dari" required />
+                </div>
+        
+                <div class="col-3">
+                  <label for="inputEmail4" class="form-label">DERAJAT SURAT</label>
+                  <div class="input-group">
+                    <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon"  name="derajat_surat">
+              
+                      <option value=""></option>
+                      {% for v in derajat_surat %}
+                      <option value="{{ v }}">{{ v }}</option>
+                    {% endfor %}
+                    </select>
+                  </div>
+        
+                </div>
+        
+                <div class="col-9">
+                  <label for="inputAddress" class="form-label">PERIHAL</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="" name="perihal" required />
+                </div>
+        
+                <div class="mb-3">
+                  <label for="formFile" class="form-label">UPLOAD FILES</label>
+                  <input class="form-control" type="file" accept=".pdf" id="file_input" name="file_name" required />
+                </div>
+        
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">EDIT SURAT</button>
+                </div>
+              </form>
+
+        </div>
+      </div>
+    </div>
+</div>
+  
+{% endfor %}

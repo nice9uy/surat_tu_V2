@@ -61,11 +61,11 @@
               </div>
             </td>
 
-            <td class="text-center gap-2">
-              <a class="btn btn-danger btn-sm fa-solid fa-k" aria-current="page" title="KABADAN" target="_blank" href=""></a>
-              <a class="btn btn-secondary btn-sm fa-solid fa-s" aria-current="page" title="SEKRETARIAT" target="_blank" href=""></a>
-              <a class="btn btn-info btn-sm fa-solid fa-u" aria-current="page" title="BAG UMUM" target="_blank" href=""></a>
-            </td>
+            <td class="text-center gap-2"> 
+              <a class="btn btn-danger btn-sm fa-solid fa-k" aria-current="page" title="KABADAN" target="_blank" href="{% url 'kabaranahan' data.id %}"></a>
+              <a class="btn btn-secondary btn-sm fa-solid fa-s" aria-current="page" title="SEKRETARIAT" target="_blank" href="{% url 'sekretariat' data.id %}"></a>
+              <a class="btn btn-info btn-sm fa-solid fa-u" aria-current="page" title="BAG UMUM" target="_blank" href="{% url 'bagum' data.id %}"></a>
+            </td> 
 
             <td class="text-center gap-2">
               <button type="button" class="btn btn-danger btn-sm fa fa-paper-plane" data-bs-toggle="modal" data-placement="bottom" title="Upload Disposisi" data-bs-target="#upload_disposisi{{ data.id }}"></button>
@@ -77,7 +77,7 @@
             </td>
 
             <td class="text-center gap-2">
-              <button type="button" class="btn btn-success btn-sm fas fa-edit" data-bs-toggle="modal" data-placement="bottom" title="UPDATE" data-bs-target="#button_edit_olah_surat{{ data.id }}"></button>
+              <button type="button" class="btn btn-success btn-sm fas fa-edit" data-bs-toggle="modal" data-placement="bottom" title="UPDATE" data-bs-target="#button_edit_surat_masuk{{ data.id }}"></button>
               <button type="button" class="btn btn-danger btn-sm fa fa-trash" data-bs-toggle="modal" data-placement="bottom" title="HAPUS" data-bs-target="#button_hapus_olah_surat{{ data.id }}"></button>
             </td>
           </tr>
@@ -88,6 +88,7 @@
 
 
   {% include 'pages/surat_masuk/admin/modal/tambah_surat_masuk.html' %}
+  {% include 'pages/surat_masuk/admin/modal/edit_surat_masuk.html' %}
 
   {% comment %} {% include 'modal/disposisi/upload_disposisi.html' %}
   {% include 'modal/olah_surat.html' %}
