@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body text-center ">
 
-            <form action="" method="POST" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
+            <form action="{% url 'edit_surat_masuk' data.id %}" method="POST" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
                 {% csrf_token %}
         
                
@@ -40,37 +40,37 @@
         
                 <div class="col-3">
                   <label for="inputPassword4" class="form-label">TANGGAL AGENDA</label>
-                  <input type="date" class="form-select" placeholder="First name" aria-label="First name" name="tanggal_agenda"  value="{{  hari_ini | date:"Y-m-d"  }}" readonly />
+                  <input type="date" class="form-select" placeholder="First name" aria-label="First name" name="tanggal_agenda"  value="{{  data.tgl_agenda | date:"Y-m-d"  }}" readonly />
                 </div>  
                 <div class="col-3">
                   <label for="inputAddress" class="form-label">NO AGENDA</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="" name="no_agenda" value="{{  no_agenda  }}" readonly />
+                  <input type="text" class="form-control" id="inputAddress" placeholder="" name="no_agenda" value="{{  data.no_agenda  }}" readonly />
                 </div>
         
                 <div class="col-md-3">
                   <label for="inputPassword4" class="form-label">TANGGAL SURAT</label>
-                  <input type="date" class="form-select" placeholder="First name" aria-label="First name" name="tanggal_surat"  />
+                  <input type="date" class="form-select" placeholder="First name" aria-label="First name" name="tanggal_surat" value="{{ data.tgl_surat | date:"Y-m-d"  }}"  />
                 </div>
         
                 <div class="col-4">
                   <label for="inputAddress" class="form-label">NO SURAT</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="" name="no_surat" required />
+                  <input type="text" class="form-control" id="inputAddress" placeholder="" name="no_surat" required  value="{{  data.no_surat }}" />
                 </div>
         
                 <div class="col-5">
                   <label for="inputAddress" class="form-label">SURAT DARI</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="" name="surat_dari" required />
+                  <input type="text" class="form-control" id="inputAddress" placeholder="" name="surat_dari" required value="{{ data.surat_dari }}" />
                 </div>
         
                 <div class="col-3">
                   <label for="inputEmail4" class="form-label">DERAJAT SURAT</label>
                   <div class="input-group">
-                    <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon"  name="derajat_surat">
-              
-                      <option value=""></option>
-                      {% for v in derajat_surat %}
+                    <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon"  name="derajat_surat" >
+                      <option value="{{ data.derajat_surat }}">{{ data.derajat_surat }}</option>
+                      <option value="">================</option>
+                         {% for v in derajat_surat %}
                       <option value="{{ v }}">{{ v }}</option>
-                    {% endfor %}
+                         {% endfor %}
                     </select>
                   </div>
         
@@ -78,12 +78,12 @@
         
                 <div class="col-9">
                   <label for="inputAddress" class="form-label">PERIHAL</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="" name="perihal" required />
+                  <input type="text" class="form-control" id="inputAddress" placeholder="" name="perihal" required value="{{ data.perihal }}" />
                 </div>
         
                 <div class="mb-3">
                   <label for="formFile" class="form-label">UPLOAD FILES</label>
-                  <input class="form-control" type="file" accept=".pdf" id="file_input" name="file_name" required />
+                  <input class="form-control" type="file" accept=".pdf" id="file_input" name="file_name"   />
                 </div>
         
                 <div class="col-12">

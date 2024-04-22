@@ -78,7 +78,7 @@
 
             <td class="text-center gap-2">
               <button type="button" class="btn btn-success btn-sm fas fa-edit" data-bs-toggle="modal" data-placement="bottom" title="UPDATE" data-bs-target="#button_edit_surat_masuk{{ data.id }}"></button>
-              <button type="button" class="btn btn-danger btn-sm fa fa-trash" data-bs-toggle="modal" data-placement="bottom" title="HAPUS" data-bs-target="#button_hapus_olah_surat{{ data.id }}"></button>
+              <button type="button" class="btn btn-danger btn-sm fa fa-trash" data-bs-toggle="modal" data-placement="bottom" title="HAPUS" data-bs-target="#button_delete_surat_masuk{{ data.id }}"></button>
             </td>
           </tr>
         {% endfor %}
@@ -89,6 +89,7 @@
 
   {% include 'pages/surat_masuk/admin/modal/tambah_surat_masuk.html' %}
   {% include 'pages/surat_masuk/admin/modal/edit_surat_masuk.html' %}
+  {% include 'pages/surat_masuk/admin/modal/delete_surat_masuk.html' %}
 
   {% comment %} {% include 'modal/disposisi/upload_disposisi.html' %}
   {% include 'modal/olah_surat.html' %}

@@ -6,6 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.template.loader import get_template
 from django.http import HttpResponse
 from weasyprint import HTML
+import string
+import random
+import secrets
 
 ########### DISPOSISI ################################
 
@@ -97,21 +100,25 @@ def bagum(request , getIDdisosisi_bagum):
 
 #######################################################################################
 
+@login_required(login_url="/accounts/login/")
 def surat_masuk(request):
     
     if request.user.is_authenticated:
 
         if request.user.groups.filter(name="TU_SET_ADMIN").exists():
 
+            kode_keamanan        = ''.join(secrets.choice(string.ascii_letters + string.digits)for i in range(20))
+
             jenis_surat_data     = list(DbJenisSurat.objects.all().values_list('jenis_surat' , flat=True))
             klasifikasi_data     = list(DbKlasifikasi.objects.all().values_list('klasifikasi' , flat=True))
             surat_masuk          = DbSurat.objects.all()
 
             context = {
-                "page_title"  : "Admin - xx",
-                'jenis_surat' : jenis_surat_data,
-                'klasifikasi' : klasifikasi_data,
-                'surat_masuk' : surat_masuk 
+                "page_title"    : "Admin - xx",
+                'jenis_surat'   : jenis_surat_data,
+                'klasifikasi'   : klasifikasi_data,
+                'surat_masuk'   : surat_masuk,
+                'kode_keamanan' : kode_keamanan
             }
 
             return render(request, "pages/surat_masuk/admin/admin.html", context)
@@ -133,6 +140,8 @@ def surat_masuk(request):
     else:
         pass
 
+
+@login_required(login_url="/accounts/login/")
 def delete_no_agenda_temp(request):
     user    = request.user
 
@@ -141,33 +150,15 @@ def delete_no_agenda_temp(request):
 
     return redirect('surat_masuk')
 
-
-# def validasi_user_no_agenda(request):
-#     user             = request.user
-#     user_no_agenda   = TempNoAgenda.objects.filter(username = user)  
-#     user_cek         = TempNoAgenda.objects.filter(username = user).count()
-
-#     if user_cek == 0:
-#         generate_no_agenda()
-#     elif user == user_no_agenda:
-#         return redirect('tambah_surat_masuk')
-#     else:
-#         return redirect('surat_masuk')
-
+@login_required(login_url="/accounts/login/")
 def generate_no_agenda(request):
-    username   = request.user
+    username               = request.user
+    user_cek_first         = TempNoAgenda.objects.values_list('id', flat=True).first()
+    user_cek_last          = TempNoAgenda.objects.values_list('id', flat=True).last()
+    user_cek               = TempNoAgenda.objects.filter(username = username).values_list('username', flat=True).first()
+    # print(user_cek)
 
-    user_no_agenda   = list(TempNoAgenda.objects.values_list('username').first())
-    
-    try:
-        user_cek         = list(TempNoAgenda.objects.filter(username = username).values_list('username', flat=True))
-        user             = user_cek[0]
-    except:
-         pass
-    
-    print(user_no_agenda)
-
-    if user_no_agenda == None :
+    if user_cek_first == None :
 
         no         = 1
         hari_ini   = date.today()
@@ -241,14 +232,19 @@ def generate_no_agenda(request):
                 save_to_no_agenda.save()
                 return redirect('tambah_surat_masuk')
             
-    elif username != user_no_agenda :
+    elif user_cek_first < user_cek_last :
         print("fhgkfaffafaf")
+        return redirect('surat_masuk')
+    elif username != user_cek :
+        print("wkwkwkwkw")
         return redirect('tambah_surat_masuk')    
     else:
         print('qqqqqqqqqq')
         return redirect('surat_masuk')
+    
+    return render(request, "pages/surat_masuk/admin/pages_tambah_surat_masuk.html")
                 
-
+@login_required(login_url="/accounts/login/")
 def tambah_surat_masuk(request):
     try:
     
@@ -327,4 +323,77 @@ def tambah_surat_masuk(request):
 
 
 
+@login_required(login_url="/accounts/login/")
+def edit_surat_masuk(request , id_edit_surat_masuk ):
+    username = request.user
+    edit_surat_masuk = get_object_or_404(DbSurat, pk = id_edit_surat_masuk)
 
+    
+    try:
+        if request.method == 'POST':
+            get_jenis_surat           = request.POST.get('jenis_surat')
+            get_klasifikasi           = request.POST.get('klasifikasi')
+            get_tgl_agenda            = request.POST.get('tanggal_agenda')          
+            get_no_agenda             = request.POST.get('no_agenda')
+
+            get_tanggal_surat         = request.POST.get('tanggal_surat')
+
+            get_no_surat              = request.POST.get('no_surat')
+            get_surat_dari            = request.POST.get('surat_dari')
+            get_derajat_surat         = request.POST.get('derajat_surat')
+            get_perihal               = request.POST.get('perihal')
+            files_upload_data         = request.FILES.get('file_name')
+
+            data_surat =  edit_surat_masuk.upload_file.name
+
+            if  files_upload_data == None:
+                files_upload  = data_surat
+
+            else:
+                files_upload = files_upload_data
+                edit_surat_masuk.upload_file.delete()
+
+            edit_surat_masuk = DbSurat(
+
+                id             = id_edit_surat_masuk,
+                username       = str(username),
+                jenis_surat    = get_jenis_surat,
+                klasifikasi    = get_klasifikasi,
+                tgl_agenda     = get_tgl_agenda,
+                id_jenis_surat = edit_surat_masuk.id_jenis_surat,
+                no_agenda      = get_no_agenda,
+                
+                tgl_surat      = get_tanggal_surat if get_tanggal_surat else None ,
+
+                no_surat       = get_no_surat,
+                surat_dari     = get_surat_dari,
+                derajat_surat  = get_derajat_surat,
+                perihal        = get_perihal,
+                upload_file    = files_upload
+                
+                )
+            
+            edit_surat_masuk.save()
+            return redirect('surat_masuk')        
+    except:
+        return redirect('surat_masuk')
+    
+
+@login_required(login_url="/accounts/login/")
+def delete_surat_masuk(request , id_delete_surat_masuk):
+    delete_surat_masuk = get_object_or_404(DbSurat, pk = id_delete_surat_masuk)
+
+    if request.method == 'POST':
+
+        kode_keamanan_1    =  request.POST.get('kode_1')
+        kode_keamanan_2    =  request.POST.get('kode_2')
+
+        if kode_keamanan_1 == kode_keamanan_2:
+
+            delete_surat_masuk.upload_file.delete()
+            delete_surat_masuk.delete()
+            return redirect('surat_masuk')
+        else:
+            return redirect('surat_masuk')
+    
+    return render(request,'pages/olah_surat.html')
