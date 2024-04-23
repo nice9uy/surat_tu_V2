@@ -34,6 +34,7 @@ class DbSurat(models.Model):
 class DisposisiDb(models.Model):    
     id                      = models.AutoField(primary_key=True, unique=True)
     username                = models.CharField(max_length=30)
+    group                   = models.CharField(max_length=30)
     disposisi               = models.CharField(max_length = 30)
     tgl_disposisi           = models.DateField()
     tgl_disposisi_kembali   = models.DateField(null = True, blank=True)

@@ -100,12 +100,14 @@ def bagum(request , getIDdisosisi_bagum):
 
 #######################################################################################
 
+
+
 @login_required(login_url="/accounts/login/")
 def surat_masuk(request):
     
     if request.user.is_authenticated:
 
-        if request.user.groups.filter(name="TU_SET_ADMIN").exists():
+        if request.user.groups.filter(name="SET_TU").exists():
 
             kode_keamanan        = ''.join(secrets.choice(string.ascii_letters + string.digits)for i in range(20))
 
@@ -114,14 +116,14 @@ def surat_masuk(request):
             surat_masuk          = DbSurat.objects.all()
 
             context = {
-                "page_title"    : "Admin - xx",
+                "page_title"    : "SEKRETARIAT - TU",
                 'jenis_surat'   : jenis_surat_data,
                 'klasifikasi'   : klasifikasi_data,
-                'surat_masuk'   : surat_masuk,
+                'surat_masuk'   :  surat_masuk,
                 'kode_keamanan' : kode_keamanan
             }
 
-            return render(request, "pages/surat_masuk/admin/admin.html", context)
+            return render(request, "pages/surat_masuk/SET_TU/index.html", context )
 
         elif request.user.groups.filter(name="TU_SET_KASUBBAG").exists():
 
@@ -139,6 +141,11 @@ def surat_masuk(request):
 
     else:
         pass
+
+
+@login_required(login_url="/accounts/login/")
+def set_tu(request):
+     pass
 
 
 @login_required(login_url="/accounts/login/")
@@ -242,7 +249,7 @@ def generate_no_agenda(request):
         print('qqqqqqqqqq')
         return redirect('surat_masuk')
     
-    return render(request, "pages/surat_masuk/admin/pages_tambah_surat_masuk.html")
+    return render(request, "pages/surat_masuk/SET_TU/pages_tambah_surat_masuk.html")
                 
 @login_required(login_url="/accounts/login/")
 def tambah_surat_masuk(request):
@@ -316,7 +323,7 @@ def tambah_surat_masuk(request):
             'hari_ini'       : tgl_agenda       
         }
 
-        return render(request, "pages/surat_masuk/admin/pages_tambah_surat_masuk.html", context)
+        return render(request, "pages/surat_masuk/SET_TU/pages_tambah_surat_masuk.html", context)
 
     except Exception as e:
         print(e)

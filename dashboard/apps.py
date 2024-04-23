@@ -3,7 +3,15 @@ from django.apps import AppConfig
 def create_group(sender, **kwargs):
     from django.contrib.auth.models import Group
 
-    group_names = ['TU_SET_ADMIN',"TU_SET_KASUBBAG","USER","ADMIN_TU"]
+    group_names = ['SET_TU',
+                   "SET_KASUBBAG_TU",
+                   "SET_BAG_DATIN",
+                   "SET_MALUR",
+                   "SET_PROGLAP",
+                   "SET_BAG_UM",
+                   "SPRI_KABADAN",
+                   "SPRI_SES"
+                   ]
 
     # Check if the group already exists to avoid duplicates
     for group_name in group_names:

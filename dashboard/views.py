@@ -21,7 +21,7 @@ def dashboard(request):
 
         # print(grup_name)
 
-        if request.user.groups.filter(name = "TU_SET_ADMIN").exists():
+        if request.user.groups.filter(name = "SET_TU").exists():
 
             context = {"page_title": "Admin - Dashboard"}
 
@@ -32,11 +32,11 @@ def dashboard(request):
             return render(request, "pages/dashboard/kasubbag.html")
         
 
-        elif request.user.groups.filter(Q(name = group1 ) & Q(name = group2 )).exists():
+        # elif request.user.groups.filter(Q(name = group1 ) & Q(name = group2 )).exists():
 
-            print("xxxxxx")
+        #     print("xxxxxx")
 
-            return render(request, "pages/dashboard/user.html")
+        #     return render(request, "pages/dashboard/user.html")
 
         else:
 
